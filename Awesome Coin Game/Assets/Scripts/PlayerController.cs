@@ -38,6 +38,6 @@ public class PlayerController : MonoBehaviour
 
     bool IsOnTheGround() {
         return Physics2D.Raycast(transform.position,
-            Vector2.down,1.0f,groundLayerMask);
+            Vector2.down,1.0f,groundLayerMask.value);
     }
 }
