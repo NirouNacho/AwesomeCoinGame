@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float thrust = 10.0f;
     public LayerMask groundLayerMask;
     public Animator animator;
+    public float runSpeed = 3.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -18,10 +19,19 @@ public class PlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         animator.SetBool("isAlive", true);
     }
+    //This method is called at a very precise period of time
+    private void FixedUpdate()
+    {
+        if (rigidBody.velocity.x < runSpeed) 
+        {
+            rigidBody.velocity = new Vector2(runSpeed, rigidBody.velocity.y);
+        }
+    }
 
     // Update is called once per frame
     void Update()
     {
+
         bool isOnTheGround = IsOnTheGround();
         animator.SetBool("isGrounded",isOnTheGround);
 
