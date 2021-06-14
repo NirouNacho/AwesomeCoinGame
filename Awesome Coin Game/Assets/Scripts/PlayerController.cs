@@ -32,8 +32,10 @@ public class PlayerController : MonoBehaviour
     //Methods
 
     void Jump() {
-        rigidBody.AddForce(Vector2.up * thrust, ForceMode2D.Impulse);
-
+        if (IsOnTheGround())
+        {
+            rigidBody.AddForce(Vector2.up * thrust, ForceMode2D.Impulse);
+        }
     }
 
     bool IsOnTheGround() {
