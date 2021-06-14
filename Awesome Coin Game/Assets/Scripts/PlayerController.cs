@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rigidBody;
     public float thrust = 10.0f;
-
+    public LayerMask groundLayerMask;
 
     // Start is called before the first frame update
     void Start()
@@ -34,5 +34,10 @@ public class PlayerController : MonoBehaviour
     void Jump() {
         rigidBody.AddForce(Vector2.up * thrust, ForceMode2D.Impulse);
 
+    }
+
+    bool IsOnTheGround() {
+        return Physics2D.Raycast(transform.position,
+            Vector2.down,1.0f,groundLayerMask);
     }
 }
