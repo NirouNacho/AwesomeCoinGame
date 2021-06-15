@@ -12,16 +12,6 @@ using UnityEngine;
  * 
  * **/
 
-enum DaysOfTheWeek { 
-Lunes,
-Martes,
-Miercoles,
-Jueves,
-Viernes,
-Sabado,
-Domingo
-}
-
 public enum GameState {
     Menu, InGame, GameOver, Pause
 } 
@@ -47,17 +37,24 @@ public class GameManager : MonoBehaviour
     // Starts our game
     public void StartGame()
     {
-        // print("Hoy es " + (int)currentDay);
-
+        
         currentGameState = GameState.Menu;
 
     }
-
+   
     private void Start()
     {
-        StartGame();
+        //StartGame();
+        currentGameState = GameState.Menu;
     }
 
+    private void Update()
+    {
+        if (Input.GetButtonDown("s")) 
+        {
+            ChangeGameState(GameState.InGame);
+        }
+    }
     // Called when palyer dies
     public void GameOver()
     {
