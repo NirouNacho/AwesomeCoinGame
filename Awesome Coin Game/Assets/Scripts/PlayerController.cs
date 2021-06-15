@@ -12,6 +12,17 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayerMask;
     public Animator animator;
     public float runSpeed = 3.0f;
+    private static PlayerController sharedInstance;
+
+    private void Awake()
+    {
+        sharedInstance = this;
+    }
+
+    public static PlayerController GetInstance() 
+    {
+        return sharedInstance;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -60,11 +71,17 @@ public class PlayerController : MonoBehaviour
     }
 
     bool IsOnTheGround() {
-        print("mask=" + groundLayerMask);
+        
         return Physics2D.Raycast(
             this.transform.position,
             Vector2.down,
             1.5f, 
             groundLayerMask.value);
+    }
+
+    public void KillPlayer() 
+    {
+        animator.SetBool("isAlive", false);
+        GameManager.GetInstance().GameOver();
     }
 }
