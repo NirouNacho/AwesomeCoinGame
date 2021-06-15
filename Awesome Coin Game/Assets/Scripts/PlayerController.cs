@@ -18,24 +18,30 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         animator.SetBool("isAlive", true);
+        
     }
     //This method is called at a very precise period of time
     private void FixedUpdate()
     {
-        if (rigidBody.velocity.x < runSpeed) 
-        {
-            rigidBody.velocity = new Vector2(runSpeed, rigidBody.velocity.y);
+        GameState currState = GameManager.GetInstance().currentGameState;
+        if (currState == GameState.InGame) {
+
+            if (rigidBody.velocity.x < runSpeed)
+            {
+                rigidBody.velocity = new Vector2(runSpeed, rigidBody.velocity.y);
+            }
         }
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        bool canJump = GameManager.GetInstance().currentGameState == GameState.InGame;
         bool isOnTheGround = IsOnTheGround();
         animator.SetBool("isGrounded",isOnTheGround);
 
-        if ((Input.GetMouseButtonDown(0)
+        if (canJump && (Input.GetMouseButtonDown(0)
             || Input.GetKeyDown(KeyCode.Space)
             || Input.GetKeyDown(KeyCode.W))
             && isOnTheGround)

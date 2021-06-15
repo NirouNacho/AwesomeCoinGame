@@ -31,15 +31,25 @@ public class GameManager : MonoBehaviour
     //Starts pur game
     // DaysOfTheWeek currentDay = DaysOfTheWeek.Domingo;
 
-    GameState currentGameState = GameState.Menu;
+    public GameState currentGameState = GameState.Menu;
+    private static GameManager sharedInstance;
 
+    private void Awake()
+    {
+        sharedInstance = this;
+    }
+
+    public static GameManager GetInstance() 
+    {
+        return sharedInstance;
+    }
 
     // Starts our game
     public void StartGame()
     {
         // print("Hoy es " + (int)currentDay);
 
-        ChangeGameState(GameState.InGame);
+        currentGameState = GameState.Menu;
 
     }
 
@@ -61,19 +71,39 @@ public class GameManager : MonoBehaviour
 
     private void ChangeGameState(GameState newGameState)
     {
-        if (newGameState == GameState.Menu)
-        {
-            //Let show the menu scene
-        }
-        else if (newGameState == GameState.InGame)
-        {
-            //Unity must show the Real Game
-        }
-        else if (newGameState == GameState.GameOver) 
-        {
-            // Lets load end of the game scene
-        }
+        /* if (newGameState == GameState.Menu)
+         {
+             //Let show the menu scene
+         }
+         else if (newGameState == GameState.InGame)
+         {
+             //Unity must show the Real Game
+         }
+         else if (newGameState == GameState.GameOver) 
+         {
+             // Lets load end of the game scene
+         }
+        else{
+        currentGameState = GameState.Menu;
+         }
+        */
 
+        switch (newGameState)
+        {
+            case GameState.Menu:
+                //Let show the menu scene
+                break;
+            case GameState.InGame:
+                //Unity must show the Real Game
+                break;
+            case GameState.GameOver:
+                // Lets load end of the game scene
+                break;
+            default:
+                currentGameState = GameState.Menu;
+                break;
+
+        }
         currentGameState = newGameState;
 
     }
