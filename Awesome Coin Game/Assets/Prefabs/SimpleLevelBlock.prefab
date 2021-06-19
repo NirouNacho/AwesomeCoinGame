@@ -1490,6 +1490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 483678}
   - component: {fileID: 6151502}
+  - component: {fileID: 7077441577709654685}
   m_Layer: 0
   m_Name: LeaveTrigger
   m_TagString: Untagged
@@ -1537,6 +1538,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 10.43}
   m_EdgeRadius: 0
+--- !u!114 &7077441577709654685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f3b02e6bf2d9f4093c2d5e79f85a10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &197998
 GameObject:
   m_ObjectHideFlags: 0

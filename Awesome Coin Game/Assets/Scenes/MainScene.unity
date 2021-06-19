@@ -446,7 +446,7 @@ MonoBehaviour:
   legoBlocks:
   - {fileID: 294057251}
   initialPoint: {fileID: 1291855101}
-  initialBlockNumber: 2
+  initialBlockNumber: 3
 --- !u!4 &1352503649
 Transform:
   m_ObjectHideFlags: 0
@@ -617,7 +617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 434174, guid: cb0d2c6f4f6b14fcc90da94309fb9a75, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.663341
+      value: -19.6
       objectReference: {fileID: 0}
     - target: {fileID: 434174, guid: cb0d2c6f4f6b14fcc90da94309fb9a75, type: 3}
       propertyPath: m_LocalPosition.z
@@ -653,7 +653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 483678, guid: cb0d2c6f4f6b14fcc90da94309fb9a75, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.23
+      value: 31
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb0d2c6f4f6b14fcc90da94309fb9a75, type: 3}
