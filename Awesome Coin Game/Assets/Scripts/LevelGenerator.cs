@@ -23,9 +23,15 @@ public class LevelGenerator : MonoBehaviour
       
     }
 
+    public byte initialBlockNumber = 2;
+
     private void Awake()
     {
         _sharedInstance = this;
+
+        for(byte i= 0; i< initialBlockNumber;i++)
+        AddNewBlock();
+        
     }
 
     // Start is called before the first frame update
@@ -44,7 +50,7 @@ public class LevelGenerator : MonoBehaviour
     public void AddNewBlock()
     {
         // 0 1 2 3 4
-        int randNumber = Random.Range(0, legoBlocks.Count -1);
+        int randNumber = Random.Range(0, legoBlocks.Count);
         //var myBlock = new LevelBlock();
         var block = Instantiate(legoBlocks[randNumber]);
         //(this.transform) this is the transform of the object that we bound level generator to

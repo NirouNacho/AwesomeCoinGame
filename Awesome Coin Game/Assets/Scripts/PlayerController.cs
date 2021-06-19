@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isAlive", true);
         transform.position = initialPosition;
         rigidBody.velocity = initialVelocity;
+        
     }
     //This method is called at a very precise period of time
     private void FixedUpdate()
