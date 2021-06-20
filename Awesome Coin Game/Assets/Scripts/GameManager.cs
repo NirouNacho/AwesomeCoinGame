@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 
 /**
@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
 
     public GameState currentGameState = GameState.Menu;
     private static GameManager sharedInstance;
+    public Canvas mainMenu;
+    public Canvas gameMenu;
+    public Canvas gameOverMenu;
+
 
     private void Awake()
     {
@@ -47,6 +51,9 @@ public class GameManager : MonoBehaviour
     {
         //StartGame();
         currentGameState = GameState.Menu;
+        mainMenu.enabled = true;
+        gameMenu.enabled = false;
+        gameOverMenu.enabled = false;
     }
 
     private void Update()
@@ -71,33 +78,23 @@ public class GameManager : MonoBehaviour
 
     private void ChangeGameState(GameState newGameState)
     {
-        /* if (newGameState == GameState.Menu)
-         {
-             //Let show the menu scene
-         }
-         else if (newGameState == GameState.InGame)
-         {
-             //Unity must show the Real Game
-         }
-         else if (newGameState == GameState.GameOver) 
-         {
-             // Lets load end of the game scene
-         }
-        else{
-        currentGameState = GameState.Menu;
-         }
-        */
 
         switch (newGameState)
         {
             case GameState.Menu:
-                //Let show the menu scene
+                mainMenu.enabled = true;
+                gameMenu.enabled = false;
+                gameOverMenu.enabled = false;
                 break;
             case GameState.InGame:
-                //Unity must show the Real Game
+                mainMenu.enabled = false;
+                gameMenu.enabled = true;
+                gameOverMenu.enabled = false;
                 break;
             case GameState.GameOver:
-                // Lets load end of the game scene
+                mainMenu.enabled = false;
+                gameMenu.enabled = false;
+                gameOverMenu.enabled = true;
                 break;
             default:
                 currentGameState = GameState.Menu;
