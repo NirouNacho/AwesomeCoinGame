@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     public Canvas mainMenu;
     public Canvas gameMenu;
     public Canvas gameOverMenu;
-
+    int collectedCoins = 0;
 
     private void Awake()
     {
@@ -105,4 +105,13 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void CollectCoins()
+    {
+        collectedCoins++;
+    }
+
+    public int GetCollectedCoins()
+    {
+        return collectedCoins;
+    }
 }
