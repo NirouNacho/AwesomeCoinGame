@@ -18,9 +18,6 @@ public class PlayerController : MonoBehaviour
     private Vector3 initialPosition;
     private Vector2 initialVelocity;
 
-
-   
-    
     
     private void Awake()
     {
@@ -98,19 +95,18 @@ public class PlayerController : MonoBehaviour
     {
         
         animator.SetBool("isAlive", false);
-        GameManager.GetInstance().GameOver();
+        
         int highestScore = PlayerPrefs.GetInt(HIGHEST_SCORE_KEY);
         int currentScore = GetDistance();
         if(currentScore > highestScore)
         {
             PlayerPrefs.SetInt(HIGHEST_SCORE_KEY, currentScore);
         }
+        rigidBody.gravityScale = 0f;
+        rigidBody.velocity = Vector2.zero;
+        GameManager.GetInstance().GameOver();
     }
 
-    public void ClearMaxScore()
-    {
-        PlayerPrefs.SetInt(HIGHEST_SCORE_KEY, 0);
-    }
     
 
     public int GetDistance()
@@ -119,6 +115,10 @@ public class PlayerController : MonoBehaviour
         print("diastance = " +distance);
         return distance;
 
+    }
+    public void ClearMaxScore()
+    {
+        PlayerPrefs.SetInt(HIGHEST_SCORE_KEY, 0);
     }
 
     public int GetMaxScore()
