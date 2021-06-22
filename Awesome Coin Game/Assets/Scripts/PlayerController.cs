@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 initialPosition;
     private Vector2 initialVelocity;
-
+    private float initialGravity;
     
     private void Awake()
     {
@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
         initialPosition = transform.position;
         initialPosition = rigidBody.velocity;
         animator.SetBool("isAlive", true);
+        initialGravity = rigidBody.gravityScale;
     }
 
     public static PlayerController GetInstance() 
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isAlive", true);
         transform.position = initialPosition;
         rigidBody.velocity = initialVelocity;
+        rigidBody.gravityScale = initialGravity;
         
     }
     //This method is called at a very precise period of time
