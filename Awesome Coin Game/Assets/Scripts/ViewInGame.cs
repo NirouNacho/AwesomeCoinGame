@@ -11,23 +11,39 @@ public class ViewInGame : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text highestscoreText;
 
+    private static ViewInGame sharedInstance;
+
+    public static ViewInGame GetInstance()
+    {
+        return sharedInstance;
+    }
+    private void Awake()
+    {
+        sharedInstance = this;
+    }
     private void Start()
     {
         
     }
 
-    void showHighestScore()
+    public void ShowHighestScore()
     {
         highestscoreText.text = PlayerController.GetInstance().GetMaxScore().ToString();
     }
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.GetInstance().currentGameState == GameState.GameOver)
+       
+        if (GameManager.GetInstance().currentGameState == GameState.InGame)
         {
-            showHighestScore();
+            
+            scoreText.text = PlayerController.GetInstance().GetDistance().ToString();
+
         }
+    }
+
+    public void UpdateCoins()
+    {
         coinsLabel.text = GameManager.GetInstance().GetCollectedCoins().ToString();
-        scoreText.text = PlayerController.GetInstance().GetDistance().ToString();
     }
 }

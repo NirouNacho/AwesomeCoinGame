@@ -9,18 +9,30 @@ public class GameOverView : MonoBehaviour
 
     public TMP_Text coinsLabel;
     public TMP_Text scoreText;
-    // Start is called before the first frame update
-    void Start()
+
+    //singleton
+    private static GameOverView sharedInstance;
+
+    public static GameOverView GetInstance()
     {
-       
+        return sharedInstance;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        if(GameManager.GetInstance().currentGameState ==GameState.GameOver)
-        coinsLabel.text = GameManager.GetInstance().GetCollectedCoins().ToString();
-        scoreText.text = PlayerController.GetInstance().GetDistance().ToString();
+        sharedInstance = this;
+    }
+
+
+    // Update is called once per frame
+    public void UpdateGUI()
+    {
+        if(GameManager.GetInstance().currentGameState == GameState.GameOver)
+        {
+            coinsLabel.text = GameManager.GetInstance().GetCollectedCoins().ToString();
+            scoreText.text = PlayerController.GetInstance().GetDistance().ToString();
+
+        }
 
     }
 }
